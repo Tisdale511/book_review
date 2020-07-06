@@ -1,2 +1,3 @@
 class BookTagsController < ApplicationController
+    
 end
