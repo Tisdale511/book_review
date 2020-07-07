@@ -1,0 +1,14 @@
+<h1>Welcome, <%= @user.username %>!</h1>
+<h2>My books list:</h2>
+<div class="container">
+  <% @user.books.each do |book|%>
+    <div class="card">
+      <div><%= link_to book.title, "/users/#{book.id}" %></div>
+      <div><img src="<%= book.image_url %>" /></div>
+      <h6>
+        <div>URL: <%= book.image_url %></div>
+      </h6>
+    </div>
+  <%end%>
+</div>
+<%= link_to 'Back Homepage', books_path %>
