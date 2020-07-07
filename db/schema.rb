@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_06_184723) do
+ActiveRecord::Schema.define(version: 2020_07_06_220950) do
 
   create_table "book_tags", force: :cascade do |t|
     t.integer "book_id", null: false
@@ -25,10 +25,8 @@ ActiveRecord::Schema.define(version: 2020_07_06_184723) do
     t.string "title"
     t.string "author"
     t.string "image_url"
-    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -41,6 +39,11 @@ ActiveRecord::Schema.define(version: 2020_07_06_184723) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -49,14 +52,14 @@ ActiveRecord::Schema.define(version: 2020_07_06_184723) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "passward"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "book_tags", "books"
   add_foreign_key "book_tags", "tags"
-  add_foreign_key "books", "users"
+
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
 end

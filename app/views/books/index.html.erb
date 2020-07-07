@@ -1,0 +1,7 @@
+<h2>Homepage</h2>
+<% @books.each do |book| %>
+  <h1 style='font-size:1.5rem;margin-top:50px'>Book Title:
+    <%= link_to book.title, book %>
+  </h1>
+  <p>Address: <%= book.author %></p>
+<% end %>
