@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_07_06_220950) do
 
   add_foreign_key "book_tags", "books"
   add_foreign_key "book_tags", "tags"
-  add_foreign_key "books", "users"
+
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
 end

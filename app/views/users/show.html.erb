@@ -1,6 +1,7 @@
 <h1><%= @user.username %></h1>
-<% @user.books.each do %>
-    <%= link_to book.name, book %><br>
+
+<% @user.books.each do |book| %>
+    <%=  link_to book.title, book %><br>
 <% end %>
   
 <%= link_to "Edit User", edit_user_path %>

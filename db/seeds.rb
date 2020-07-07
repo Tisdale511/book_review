@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Book.destroy_all
+Book.create(
+    title: "QB: My Life Behind the Spiral",
+    author: "Steve Young",
+    image_url: "https://evergreen.lib.in.us/opac/extras/ac/jacket/large/r/21552076"
+)
