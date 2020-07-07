@@ -1,3 +1,8 @@
 <h1><%= @user.username %></h1>
+<% @user.books.each do %>
+    <%= link_to book.name, book %><br>
+<% end %>
+  
 <%= link_to "Edit User", edit_user_path %>
 <%= link_to "Delete User", @user, method: :delete, data: { confirm: "Are you sure you want to delete your account?" } %>
+<%= link_to "New Review", new_review_path %>
