@@ -40,3 +40,5 @@
 yarn-debug.log*
 .yarn-integrity
 /config/environments/keys.rb
+# Ignore application configuration
+/config/application.yml

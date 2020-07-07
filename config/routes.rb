@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   #resources :book_tags 
   resources :tags
-  resources :reviews, only: [:new, :create, :edit, :update, :destroy]
+  resources :reviews
   resources :books
-  resources :users, only: [:new, :create, :edit, :update, :destroy]
+  resources :users
 
   get "/signup", to: "users#new", as: :signup
   get "/login", to: "sessions#new"
