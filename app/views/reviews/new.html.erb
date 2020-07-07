@@ -1,0 +1,5 @@
+<%= form_for @review do |f| %>
+    Review: <%= f.text_area :content %><br>
+    Book: <%= f.collection_select :book_id, Book.all, :id, :name %><br>
+    <%= f.submit "Submit Review" %>
+<% end %>
