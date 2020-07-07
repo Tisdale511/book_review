@@ -1,2 +1,1 @@
-
-API_KEY = {google_books: AIzaSyA1jIs2Ah6qsscjxBt3GOJqPQyLD0rXuOs}
+#API_KEY = {google_books_key: AIzaSyBgXGQNkvARcL8ZtaMiEP0PBY6eE_p_YKs}

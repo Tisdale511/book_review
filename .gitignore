@@ -42,3 +42,5 @@ yarn-debug.log*
 
 #Ignore key input 
 /config/environments/keys.rb
+# Ignore application configuration
+/config/application.yml
