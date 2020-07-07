@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
         if !current_user
             flash[:message] = "Please log in"
             redirect_to '/login'
-        end 
+        end
     end
 
     def book_title(name)
