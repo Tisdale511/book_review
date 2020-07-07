@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    def book_title(name)
+    def find_book_by_title(name)
         "https://www.googleapis.com/books/v1/volumes?q=intitle:#{name}&key=#{API_KEY[:google_books]}"
     end
 
