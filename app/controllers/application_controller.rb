@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
         if !current_user
             flash[:message] = "Please log in"
             redirect_to '/login'
-        end 
+        end
     end
+
+    def book_title(name)
+        "https://www.googleapis.com/books/v1/volumes?q=intitle:#{name}&key=#{API_KEY[:google_books]}"
+    end
+
 end
