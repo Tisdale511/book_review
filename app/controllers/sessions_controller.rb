@@ -3,11 +3,19 @@ class SessionsController < ApplicationController
     end 
 
     def create
+        #byebug
+        # user = User.find_by(username: user_params[:username])
+        # authenticate = user.try(:authenticate, user_params[:password])
+        # @user = authenticate
+        # session[:user_id] = @user.id
+        # redirect_to user_path(@user)
         user = User.find_by(username: user_params[:username])
-        user = user.try(:authenticate, user_params[:password])
+        #byebug
+        authenticated = user.try(:authenticate, user_params[:password])
+        return head(:forbidden) unless authenticated
         @user = user
-        session[:user_id] = @user
-        redirect_to user_path(@user) 
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
     end
     def destroy
         session.delete :user_id
