@@ -12,12 +12,19 @@ class BooksController < ApplicationController
     end
 
     def create
-        @book = Book.create(book_params)
+        @book = Book.new(book_params)
+        if @book.save 
+            redirect_to book_path(@book)
+          else
+            flash[:message] = @book.errors.full_messages
+            redirect_to new_book_path
+          end
     end
 
     private
 
     def book_params
+        params.require(:book).permit(:title, :author, :image_url, :user_id, tags_ids:[])
         
     end
 end

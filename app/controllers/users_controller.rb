@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-    before_action :current_user, :redirect_user, :params_id, only: [:edit, :update, :show]
+    before_action :current_user, :redirect_user, :params_id, only: [:index, :edit, :update, :show]
     skip_before_action :redirect_user, only: [:new]
-    
+   
     def new
         @user = User.new
     end 

@@ -1,0 +1,10 @@
+<h2>Homepage</h2>
+<% @books.each do |book| %>
+  <h1 style='font-size:1.5rem;margin-top:50px'>Book Title:
+    <%= link_to book.title, book %>
+  </h1>
+  <p>Author: <%= book.author %></p>
+<% end %>
+<%= link_to 'Create a New Book', new_book_path %><br>
+<%= link_to 'My Book list', users_path %><br>
+<%= link_to 'Logout', logout_path %><br>
