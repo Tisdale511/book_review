@@ -1,5 +1,6 @@
 <%= form_for @review do |f| %>
+    <%= f.hidden_field :user_id, value: session[:user_id] %>
     Review: <%= f.text_area :content %><br>
-    Book: <%= f.collection_select :book_id, Book.all, :id, :name %><br>
+    Book: <%= f.collection_select :book_id, Book.all, :id, :title %><br>
     <%= f.submit "Submit Review" %>
 <% end %>

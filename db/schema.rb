@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 2020_07_06_220950) do
     t.string "title"
     t.string "author"
     t.string "image_url"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -52,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_07_06_220950) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password_digest"
+    t.string "passward"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

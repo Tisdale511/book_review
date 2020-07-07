@@ -1,0 +1,11 @@
+<h4><%= flash[:message] %></h4>
+<h3>Create a new Book:</h3>
+<%= form_for @book do |f|%>
+  <p>Book Title: <%= f.text_field :title%></p>
+  <p>Book Author: <%= f.text_field :author%></p>
+  <p>Book Url: <%= f.text_field :image_url%></p>
+  <p>Tags: <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name%></p>
+  <%= f.submit %>
+<%end%>
+<%= link_to 'Create Tags', new_tag_path %><br>
+<%= link_to 'Back Homepage', books_path %>
