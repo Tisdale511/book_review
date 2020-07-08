@@ -15,10 +15,10 @@ class BooksController < ApplicationController
         @book = Book.new(book_params)
         if @book.save 
             redirect_to book_path(@book)
-          else
+        else
             flash[:message] = @book.errors.full_messages
             redirect_to new_book_path
-          end
+        end
     end
 
     private
