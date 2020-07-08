@@ -5,6 +5,18 @@
   </h1>
   <p>Author: <%= book.author %></p>
 <% end %>
-<%= link_to 'Create a New Book', new_book_path %><br>
+
+<h3>Find Book Title:</h3>
+<%= form_for :book, as: :post, url: find_title_path, method: :get, html: {class: "GoogleBooks", id: "GoogleBooks"} do |f|%>
+  <%= f.text_field :find_title_path%>
+  <%= f.submit "Find Book"%>
+<%end%>
+<%#= form_for @post, as: :post, url: post_path(@post), method: :patch, html: { class: "edit_post", id: "edit_post_45" } do |f| %>
+
+
+  <p>Book Title: <%#= f.text_field :title%></p>
+  <%#= f.submit "Find Book" %>
+<%#end%>
+<%= link_to 'Find Book by Title', new_book_path %><br>
 <%= link_to 'My Book list', users_path %><br>
 <%= link_to 'Logout', logout_path %><br>
