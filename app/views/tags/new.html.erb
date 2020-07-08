@@ -1,0 +1,11 @@
+<h1>Creat a new Tag:</h1>
+<%= form_for @tag do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<%end%>
+<%= link_to 'Back to Create a new Book', new_book_path %>
