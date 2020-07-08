@@ -1,8 +1,13 @@
 class BooksController < ApplicationController
 
-    def find_title
-        # byebug
-        @book = GoogleBooks.find_book_title(params[:title])
+    def find_titles
+        #byebug
+        @book = GoogleBooks.find_book_title(params[:book][:find_titles_path])
+        render :show_titles
+    end
+
+    def show_titles
+
     end
     
     def index
