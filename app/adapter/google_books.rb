@@ -33,10 +33,17 @@ class GoogleBooks
         end
     end
 
-    # def self.find_img_url(title, author)
-    #     img_url_arr = search_books_by_title_and_author(title, author)["items"].each do |get_img|
-    #         get_img["volumeInfo"]["imageLinks"]["thumbnail"]
-    #      end
-    # end
-
+    def self.find_img_url(title, author)
+        img_url_arr = search_books_by_title_and_author(title, author)["items"].each do |get_img|
+            if  get_img["volumeInfo"] 
+                if  get_img["volumeInfo"]["imageLinks"]
+                    if get_img["volumeInfo"]["imageLinks"]["thumbnail"]
+                       return get_img["volumeInfo"]["imageLinks"]["thumbnail"]
+                    else
+                        "No image available."
+                    end
+                end
+            end
+         end
+    end   
 end
