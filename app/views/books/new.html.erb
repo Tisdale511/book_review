@@ -1,10 +1,9 @@
 <h3>Add this Book to my list:</h3>
-<%= form_for @book do |f| %>
-<%byebug%>
-  <p>Book Title: <%= text_tag :show_titles_path%></p>
-  <p>Book Author: <%= text_tag :show_authors_titles_path%></p>
-  <p>Book Url: <%= image_tag :show_img_url%></p>
-  <%= f.submit_tag 'Add' %>
-<%end%>
+
+<p>Book Title: <%= @book[:book_title] %></p>
+<p>Book Author: <#%= @book.find_authors_titles %></p>
+<p>Book Url: <%#= image_tag :show_img_url%></p>
+<%= button_to "Add Book",  @book, :method => :create %>
+
 <%= link_to 'Create Tags', new_tag_path %><br>
 <%= link_to 'Back Homepage', books_path %>
