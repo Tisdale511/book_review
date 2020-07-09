@@ -38,8 +38,9 @@ class BooksController < ApplicationController
     end
 
     def new
-        #byebug
+        byebug
         @book = Book.new
+        @book_info = params[:book]
     end
 
     def create
@@ -77,7 +78,7 @@ class BooksController < ApplicationController
     private
 
     def book_params
-        params.require(:book).permit(:title, :author, :image_url, :user_id, tags_ids:[])
+        params.require(:book).permit(:title, :author, :image_url, tags_ids:[])
         
     end
 
