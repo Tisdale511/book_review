@@ -1,5 +1,15 @@
 class BooksController < ApplicationController
 
+    def get_img_url
+        byebug
+        @book = GoogleBooks.find_img_url(params[:find_titles_path, :find_authors_titles_path])
+        render :show_img_url
+    end
+
+    def show_img_url
+
+    end
+
     def find_titles
         #byebug
         @book = GoogleBooks.find_book_title(params[:book][:find_titles_path])
@@ -7,6 +17,15 @@ class BooksController < ApplicationController
     end
 
     def show_titles
+
+    end
+
+    def find_authors_titles
+        @book = GoogleBooks.find_author_name_books(params[:book][:find_authors_titles_path])
+        render :show_authors_titles
+    end
+
+    def show_authors_titles
 
     end
     
@@ -30,6 +49,10 @@ class BooksController < ApplicationController
             flash[:message] = @book.errors.full_messages
             redirect_to new_book_path
         end
+    end
+
+    def edit
+        @book = Book.find(params[:id])
     end
 
     # def list_reviews
