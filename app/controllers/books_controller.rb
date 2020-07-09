@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
     def get_img_url
-        byebug
+        # byebug
         @book = GoogleBooks.find_img_url(params[:find_titles_path, :find_authors_titles_path])
         render :show_img_url
     end
@@ -12,7 +12,7 @@ class BooksController < ApplicationController
 
     def find_titles
         #byebug
-        @book = GoogleBooks.find_book_title(params[:book][:find_titles_path])
+        @books = GoogleBooks.find_book_title(params[:book][:find_titles_path])
         render :show_titles
     end
 
@@ -21,7 +21,7 @@ class BooksController < ApplicationController
     end
 
     def find_authors_titles
-        @book = GoogleBooks.find_author_name_books(params[:book][:find_authors_titles_path])
+        @books = GoogleBooks.find_author_name_books(params[:book][:find_authors_titles_path])
         render :show_authors_titles
     end
 
@@ -38,7 +38,9 @@ class BooksController < ApplicationController
     end
 
     def new
+        byebug
         @book = Book.new
+        @book_info = params[:book]
     end
 
     def create
@@ -76,7 +78,7 @@ class BooksController < ApplicationController
     private
 
     def book_params
-        params.require(:book).permit(:title, :author, :image_url, :user_id, tags_ids:[])
+        params.require(:book).permit(:title, :author, :image_url, tags_ids:[])
         
     end
 

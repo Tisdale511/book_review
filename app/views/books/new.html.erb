@@ -1,11 +1,17 @@
-<h4><%= flash[:message] %></h4>
-<h3>Add a new Book:</h3>
-<%= form_for @book do |f|%>
-  <p>Book Title: <%= f.text_field :title%></p>
-  <p>Book Author: <%= f.text_field :author%></p>
-  <p>Book Url: <%= f.text_field :image_url%></p>
-  <p>Tags: <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name%></p>
-  <%= f.submit %>
-<%end%>
+<h3>Add this Book to my list:</h3>
+
+<p>Book Title: <%= @book_info[:book_title] %></p>
+Book Author: <% @book_info[:book_author].each do |a| %>
+  <%= a %><br>
+<% end %>
+<p>Book Url: <%= image_tag (@book_info[:book_img_url]) %></p>
+
+<%= form_for @book do |f| %>
+  <%= f.hidden_field :title, value: @book_info[:book_title] %>    
+  <%= f.hidden_field :author, value: @book_info[:book_author] %> 
+  <%= f.hidden_field :image_url, value: @book_info[:book_img_url] %> 
+  <button type="submit">Add book</button>
+<% end %>
+  
 <%= link_to 'Create Tags', new_tag_path %><br>
 <%= link_to 'Back Homepage', books_path %>
