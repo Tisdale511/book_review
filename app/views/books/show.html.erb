@@ -5,8 +5,9 @@
 <p><%= @book.author %></p>
 <h4>Tags:</h4>
 <%@book.tags.each do |tag|%>
-  <p><%= tag %></p>
+  <p><%= tag.name %></p>
 <%end%>
+<%= button_to "Delete", @book, :method => :delete%><br>
 <h4>Reviews:</h4>
 <%@book.reviews.each do |review|%>
   <p>
