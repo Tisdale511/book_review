@@ -1,3 +1,4 @@
+<div id="content">
 <div id="main_content">
   <h2>Homepage</h2>
   <div class="container">
@@ -26,8 +27,7 @@
   <%#= form_for @post, as: :post, url: post_path(@post), method: :patch, html: { class: "edit_post", id: "edit_post_45" } do |f| %>
     <p>Book Title: <%#= f.text_field :title%></p>
     <%#= f.submit "Find Book" %>
+
     <%#end%>
-    <%= link_to 'Add a new Book', new_book_path %>
-    <%= link_to 'Me', user_path(session[:user_id]) %><br>
-  </div>
-  <!-- end of main_content -->
+  </div><!-- end of main_content -->
+</div><!-- end of content -->
