@@ -33,9 +33,12 @@ class GoogleBooks
 
 
     def self.find_author_name_books(author)
-        author_arr = search_books_by_author(author)["items"].map do |get_titles|
-            get_titles["volumeInfo"]["title"]
-        end
+        author_arr = search_books_by_title(author)["items"].map do |get_authors|
+            {book_title: get_authors["volumeInfo"]["title"], 
+            book_author: get_authors["volumeInfo"]["authors"],
+            book_img_url: self.find_img_url(get_authors)
+            }
+        end 
     end
 
     

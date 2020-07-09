@@ -21,6 +21,7 @@ class BooksController < ApplicationController
     end
 
     def find_authors_titles
+        #byebug
         @books = GoogleBooks.find_author_name_books(params[:book][:find_authors_titles_path])
         render :show_authors_titles
     end
@@ -38,7 +39,7 @@ class BooksController < ApplicationController
     end
 
     def new
-        byebug
+        #byebug
         @book = Book.new
         @book_info = params[:book]
     end
