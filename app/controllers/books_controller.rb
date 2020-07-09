@@ -44,6 +44,12 @@ class BooksController < ApplicationController
     #     # redirect_to "/books/#{book.id}/reviews"
     # end
 
+    def destroy
+        @book = Book.find_by(id: params[:id])
+        @book.destroy
+        redirect_to user_path(session[:user_id]), success: "#{@book.title} was removed from your list."
+    end
+
     private
 
     def book_params

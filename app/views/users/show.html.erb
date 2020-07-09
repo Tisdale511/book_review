@@ -1,8 +1,14 @@
 <h1><%= @user.username %></h1>
+<br>
 <% @user.books.each do |book| %>
   <%=  link_to book.title, book %><br>
-<% end %>
-<%= link_to "Edit User", edit_user_path %>
-<%= link_to "Delete User", @user, method: :delete, data: { confirm: "Are you sure you want to delete your account?" } %>
-<%= link_to "New Review", new_review_path %>
+  <div><img src="<%= book.image_url%>" /></div>
+<% end %><br>
+<h4>All reviews were written by <%= @user.username %>: </h4>
+<% @user.reviews.each do |review| %>
+  <%=  link_to review.book.title, review.book %>
+  <%=  review.content %><br>
+<% end %><br>
+<%= link_to "Edit User", edit_user_path %><br>
+<%= link_to "Delete User", @user, method: :delete, data: { confirm: "Are you sure you want to delete your account?" } %><br>
 <%= link_to "Books Homepage", books_path %>
