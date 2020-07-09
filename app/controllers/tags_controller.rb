@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  def show
+  end
   def new
     @tag = Tag.new
   end

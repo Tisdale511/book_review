@@ -25,12 +25,24 @@ class BooksController < ApplicationController
     def create
         @book = Book.new(book_params)
         if @book.save 
-            redirect_to book_path(@book)
+            redirect_to books_path
         else
             flash[:message] = @book.errors.full_messages
             redirect_to new_book_path
         end
     end
+
+    # def list_reviews
+    #     @book = Book.find(params[:id])
+    # end
+
+    # def create_reviews
+    #     @book = Book.find(params[:id])
+    #     @review = Review.create(content:reviews_params[:content], book_id:params[:book_id], user_id:session[:user_id])
+    #     redirect_to book_path(@book)
+    #     # @review = Review.create(content:reviews_path[:content])
+    #     # redirect_to "/books/#{book.id}/reviews"
+    # end
 
     private
 
@@ -38,4 +50,6 @@ class BooksController < ApplicationController
         params.require(:book).permit(:title, :author, :image_url, :user_id, tags_ids:[])
         
     end
+
+   
 end
