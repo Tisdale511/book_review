@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
@@ -16,7 +17,12 @@
         <div id="header">
           <h1 class="welcome">Welcome back, <%= current_user.username %>!</h1>
           <%= link_to "Log out", '/logout', method: 'delete' %>
+          <div class="btn-group">
+            <button><%= link_to 'Add a new Book', new_book_path %></button>
+            <button><%= link_to 'Me', user_path(session[:user_id]) %></button>
+          </div>
         </div>
+        
       <% else %>
         <%= link_to "Please sign up", new_user_path %>
         <%= link_to "Please sign in", '/login' %>
