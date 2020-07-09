@@ -9,16 +9,20 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body><% if logged_in? %>
-    <div id="header">
-      <h1 class="welcome">Welcome back, <%= current_user.username %>!</h1>
-      <%= link_to "Log out", '/logout', method: 'delete' %>
-    </div>
-    <% else %>
-      <%= link_to "Please sign up", new_user_path %>
-      <%= link_to "Please sign in", '/login' %>
-    <% end %>
-
-    <%= yield %>
+  <body>
+    <div id='wrapper'>
+      
+      <% if logged_in? %>
+        <div id="header">
+          <h1 class="welcome">Welcome back, <%= current_user.username %>!</h1>
+          <%= link_to "Log out", '/logout', method: 'delete' %>
+        </div>
+      <% else %>
+        <%= link_to "Please sign up", new_user_path %>
+        <%= link_to "Please sign in", '/login' %>
+      <% end %>
+      <%= yield %>
+    </div><!-- end of wrapper -->
+ 
   </body>
 </html>
