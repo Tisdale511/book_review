@@ -1,30 +1,38 @@
 <div id="main_content">
-  <h2>Homepage</h2>
-  <div class="container">
-    <% @books.each do |book| %>
-      <div class="card" >
-        <h1 style='font-size:1.5rem;margin-top:50px'>
-          <%= link_to book.title, book %>
-        </h1>
-        <p>Author: <%= book.author %></p>
-        <div><img src="<%= book.image_url%>" /></div>
-        <h3><%= link_to 'Reviews', "/books/#{book.id}"%></h3>
-      </div>
-    <% end %>
-  </div>
+  <h2 style="color:#001a66;">Homepage</h2>
+  <span class="border border-primary" style="color:#809fff;">
+    <div class="container">
+      <% @books.each do |book| %>
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="<%= book.image_url%>" class="card-img">
+            </div>
+            <div class="col-md-8" style="background-color:#ffff99;">
+              <div class="card-body">
+                <h5 class="card-title"><%= link_to book.title, book %></h5>
+                <p class="card-text">Author: <%= book.author %></p>
+                <p class="card-text"><small class="text-muted"><%= link_to 'Reviews', "/books/#{book.id}"%></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </span>
   <br>
-  <h3>Find Book Title:</h3>
+  <h5>Find Book Title:</h5>
   <%= form_for :book, as: :post, url: find_titles_path, method: :post do |f|%>
     <%= f.text_field :find_titles_path%>
-    <button type="submit">Find Book</button>
+    <button type="submit" class="btn btn-primary">Find Book</button>
   <%end%><br>
-  <h3>Find Book Author:</h3>
+  <h5>Find Book Author:</h5>
   <%= form_for :book, as: :post, url: find_authors_titles_path, method: :post do |f|%>
     <%= f.text_field :find_authors_titles_path%>
-    <button type="submit">Find Books by Author</button>
+    <button class="btn btn-primary" type="submit">Find Books by Author</button>
   <%end%><br>
   <%#= form_for @post, as: :post, url: post_path(@post), method: :patch, html: { class: "edit_post", id: "edit_post_45" } do |f| %>
-    <p>Book Title: <%#= f.text_field :title%></p>
+    <p><%#=Book Title:%> <%#= f.text_field :title%></p>
     <%#= f.submit "Find Book" %>
     <%#end%>
     <%= link_to 'Add a new Book', new_book_path %>
