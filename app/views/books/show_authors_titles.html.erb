@@ -1,7 +1,7 @@
 <h3>Author's Book Titles:</h3>
 <% @books.map do |b|%><br>
 
-  <%= link_to b, new_book_path %>
+  <%= link_to b[:book_title], new_book_path({book: b}) %>
 <%end%><br>
 <%#end%>
 <%= link_to 'Create Tags', new_tag_path %><br>
