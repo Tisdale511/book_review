@@ -1,20 +1,24 @@
 <div id="main_content">
   <h2>Homepage</h2>
-  <% @books.each do |book| %>
-    <h1 style='font-size:1.5rem;margin-top:50px'>
-      <%= link_to book.title, book %>
-    </h1>
-    <p>Author: <%= book.author %></p>
-    <div><img src="<%= book.image_url%>" /></div>
-    <h3><%= link_to 'Reviews', "/books/#{book.id}"%></h3>
-  <% end %>
+  <div class="container">
+    <% @books.each do |book| %>
+      <div class="card" >
+        <h1 style='font-size:1.5rem;margin-top:50px'>
+          <%= link_to book.title, book %>
+        </h1>
+        <p>Author: <%= book.author %></p>
+        <div><img src="<%= book.image_url%>" /></div>
+        <h3><%= link_to 'Reviews', "/books/#{book.id}"%></h3>
+      </div>
+    <% end %>
+  </div>
+  <br>
   <h3>Find Book Title:</h3>
   <%= form_for :book, as: :post, url: find_titles_path, method: :post do |f|%>
     <%= f.text_field :find_titles_path%>
     <button type="submit">Find Book</button>
   <%end%><br>
-
-  <h3>Find Book Title:</h3>
+  <h3>Find Book Author:</h3>
   <%= form_for :book, as: :post, url: find_authors_titles_path, method: :post do |f|%>
     <%= f.text_field :find_authors_titles_path%>
     <button type="submit">Find Books by Author</button>
