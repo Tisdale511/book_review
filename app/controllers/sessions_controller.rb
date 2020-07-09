@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
         return head(:forbidden) unless authenticated
         @user = user
         session[:user_id] = @user.id
-        redirect_to user_path(@user)
+        # redirect_to user_path(@user)
+        redirect_to books_path
     end
     def destroy
         session.delete :user_id

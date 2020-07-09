@@ -1,15 +1,18 @@
 class ReviewsController < ApplicationController
     before_action :current_user, :redirect_user, :review, only: [:show, :edit, :update, :destroy]
+  
     def new
         @review = Review.new
     end
 
-    def create  
-        @review = Review.create(review_params)
-        redirect_to @review
+    def create 
+        @book = Book.find(params[:book_id])
+        @review = Review.create(content:reviews_params[:content], book_id:params[:book_id], user_id:session[:user_id])
+        redirect_to book_path(@book)
     end
 
     def show 
+      @book = Book.find(params[:book_id])
     end
 
     def edit
@@ -29,7 +32,7 @@ class ReviewsController < ApplicationController
     def review
         @review = Review.find(params[:id])
     end
-    def review_params
+    def reviews_params
         params.require(:review).permit(:content, :book_id, :user_id)
     end
 end

@@ -1,3 +1,4 @@
+<div><img src="<%= @book.image_url%>" /></div>
 <h3>Book Title:</h3>
 <p><%= @book.title %></p>
 <h3>Book Author:</h3>
@@ -6,7 +7,7 @@
 <%@book.tags.each do |tag|%>
   <p><%= tag %></p>
 <%end%>
-<h3>Reviews:</h3>
+<h4>Reviews:</h4>
 <%@book.reviews.each do |review|%>
   <p>
     <strong><%= review.user.username %>:</strong>
@@ -14,13 +15,13 @@
   </p>
 <%end%>
 <h3>Add a review:</h3>
-<%=form_for([@book, @book.comments.build], local: true) do |f|%>
+<%=form_for([@book, @book.reviews.build], local: true) do |f|%>
   <p>
     <%=f.label :content%><br>
     <%=f.text_area :content%>
   </p>
   <p>
-    <%= f.submit%>
+    <%= f.submit "Add a Review"%>
   </p>
 <%end%>
 <%= link_to 'Back Homepage', books_path %>
