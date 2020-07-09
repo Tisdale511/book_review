@@ -1,6 +1,6 @@
 <h3>Book Titles:</h3>
 <% @books.map do |b|%><br>
-  <%= link_to b[:book_title],  new_book_path%>
+  <%= link_to b[:book_title],  new_book_path({book: b}) %>
   <%#byebug%>
 <%end%><br>
 <%#end%>
