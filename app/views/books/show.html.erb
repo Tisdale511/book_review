@@ -3,6 +3,8 @@
 <p><%= @book.title %></p>
 <h3>Book Author:</h3>
 <p><%= @book.author %></p>
+<%#= image_tag @book.get_img_url%>
+
 <h4>Tags:</h4>
 <%@book.tags.each do |tag|%>
   <p><%= tag.name %></p>
