@@ -80,3 +80,9 @@ button:hover {
     display: inline-block;
     vertical-align: top;
 }
+/* image size */
+.image_container img {
+  width: 260px;
+  height: 180px;
+}
+

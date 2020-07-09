@@ -23,9 +23,14 @@ class GoogleBooks
 
     def self.find_book_title(title)
         title_arr = search_books_by_title(title)["items"].map do |get_titles|
-            get_titles["volumeInfo"]["title"]
+            {book_title: get_titles["volumeInfo"]["title"], 
+            book_author: get_titles["volumeInfo"]["authors"],
+            book_img_url: self.find_img_url(get_titles)
+            }
         end
     end
+
+
 
     def self.find_author_name_books(author)
         author_arr = search_books_by_author(author)["items"].map do |get_titles|
@@ -33,17 +38,22 @@ class GoogleBooks
         end
     end
 
-    def self.find_img_url(title, author)
-        img_url_arr = search_books_by_title_and_author(title, author)["items"].each do |get_img|
+    
+    def self.find_img_url(get_img)
+        # img_url_arr = search_books_by_title_and_author(title, author)["items"].each do |get_img|
             if  get_img["volumeInfo"] 
                 if  get_img["volumeInfo"]["imageLinks"]
                     if get_img["volumeInfo"]["imageLinks"]["thumbnail"]
                        return get_img["volumeInfo"]["imageLinks"]["thumbnail"]
                     else
-                        "No image available."
+                        "https://images.app.goo.gl/yxU4BHaCLSm33aFe7"
                     end
+                else
+                    "https://images.app.goo.gl/yxU4BHaCLSm33aFe7"
                 end
+            else
+                "https://images.app.goo.gl/yxU4BHaCLSm33aFe7"
             end
-         end
+         #end
     end   
 end

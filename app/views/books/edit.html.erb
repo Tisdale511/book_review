@@ -1,0 +1,21 @@
+<h3>Add this Book to my list:</h3>
+<%= form_for (book_path, method: :patch) do %>
+  <p>Book Title: <%= text_tag :show_titles_path%></p>
+  <p>Book Author: <%= text_tag :show_authors_titles_path%></p>
+  <p>Book Url: <%= image_tag :show_img_url%></p>
+  <%= f.submit_tag 'Add' %>
+<%end%>
+<%= link_to 'Create Tags', new_tag_path %><br>
+<%= link_to 'Back Homepage', books_path %>
+
+<h4><%#= flash[:message] %></h4>
+<h3>Add a new Book:</h3>
+<%= form_for @book do |f|%>
+  <p>Book Title: <%= f.text_field :title%></p>
+  <p>Book Author: <%= f.text_field :author%></p>
+  <p>Book Url: <%= f.text_field :image_url%></p>
+  <p>Tags: <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name%></p>
+  <%= f.submit %>
+<%end%>
+<%= link_to 'Create Tags', new_tag_path %><br>
+<%= link_to 'Back Homepage', books_path %>

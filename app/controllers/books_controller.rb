@@ -1,12 +1,31 @@
 class BooksController < ApplicationController
 
+    def get_img_url
+        # byebug
+        @book = GoogleBooks.find_img_url(params[:find_titles_path, :find_authors_titles_path])
+        render :show_img_url
+    end
+
+    def show_img_url
+
+    end
+
     def find_titles
-        #byebug
+        # byebug
         @book = GoogleBooks.find_book_title(params[:book][:find_titles_path])
         render :show_titles
     end
 
     def show_titles
+
+    end
+
+    def find_authors_titles
+        @book = GoogleBooks.find_author_name_books(params[:book][:find_authors_titles_path])
+        render :show_authors_titles
+    end
+
+    def show_authors_titles
 
     end
     
@@ -32,6 +51,10 @@ class BooksController < ApplicationController
         end
     end
 
+    def edit
+        @book = Book.find(params[:id])
+    end
+
     # def list_reviews
     #     @book = Book.find(params[:id])
     # end
@@ -43,6 +66,12 @@ class BooksController < ApplicationController
     #     # @review = Review.create(content:reviews_path[:content])
     #     # redirect_to "/books/#{book.id}/reviews"
     # end
+
+    def destroy
+        @book = Book.find_by(id: params[:id])
+        @book.destroy
+        redirect_to user_path(session[:user_id]), success: "#{@book.title} was removed from your list."
+    end
 
     private
 
