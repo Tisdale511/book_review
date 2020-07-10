@@ -4,7 +4,6 @@
 <h3>Book Author:</h3>
 <p><%= @book.author %></p>
 <%#= image_tag @book.get_img_url%>
-
 <h4>Tags:</h4>
 <%@book.tags.each do |tag|%>
   <p><%= tag.name %></p>
@@ -15,6 +14,16 @@
   <p>
     <strong><%= review.user.username %>:</strong>
     <%=review.content%>
+  </p>
+<%end%>
+<h3>Add a Tag:</h3>
+<%=form_for([@book, @book.tags.build], local: true) do |f|%>
+  <p>
+    <%=f.label :name%><br>
+    <%=f.text_area :name%>
+  </p>
+  <p>
+    <%= f.submit "Add a Tag"%>
   </p>
 <%end%>
 <h3>Add a review:</h3>
