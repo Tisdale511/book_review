@@ -16,11 +16,6 @@
     <%=review.content%>
   </p>
 <%end%>
-<h5>Add a new Tag:</h5>
-<%= form_for @book do |f|%>
-  <%= f.collection_select :tag_ids, Tag.all, :id, :name%>
-  <%= f.submit "Add"%>
-<%end%>
 <h3>Add a review:</h3>
 <%=form_for([@book, @book.reviews.build], local: true) do |f|%>
   <p>
@@ -31,5 +26,5 @@
     <%= f.submit "Add a Review"%>
   </p>
 <%end%>
-<%= link_to 'Create Tags', new_tag_path %>
+<%= link_to 'Edit this Book', edit_book_path %>
 <%= link_to 'Back Homepage', books_path %>

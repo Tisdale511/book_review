@@ -60,7 +60,8 @@ class BooksController < ApplicationController
     def update
         # byebug
         @book = Book.find(params[:id])
-        @Book.update(book_params[:tags_ids])
+        @book.update(book_params)
+        # byebug
         
         redirect_to book_path(@book)
     end
@@ -86,7 +87,7 @@ class BooksController < ApplicationController
     private
 
     def book_params
-        params.require(:book).permit(:title, :author, :image_url, :tags_ids)
+        params.require(:book).permit(:title, :author, :image_url, tag_ids:[])
         
     end
 
