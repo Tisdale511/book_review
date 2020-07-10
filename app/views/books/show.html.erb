@@ -7,15 +7,15 @@
 <h4>Tags:</h4>
 <%@book.tags.each do |tag|%>
   <p><%= tag.name %></p>
-<%end%>
-<%= button_to "Delete", @book, :method => :delete%><br>
+<%end%><br>
+<%= button_to "Delete the Book", @book, :method => :delete%><br>
 <h4>Reviews:</h4>
 <%@book.reviews.each do |review|%>
   <p>
     <strong><%= review.user.username %>:</strong>
     <%=review.content%>
   </p>
-<%end%>
+<%end%><br>
 <h3>Add a review:</h3>
 <%=form_for([@book, @book.reviews.build], local: true) do |f|%>
   <p>
