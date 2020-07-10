@@ -1,18 +1,18 @@
 class TagsController < ApplicationController
   def index
+    @tags = Tag.all
   end
 
   def show
-    @book = Book.find(params[:book_id])
+    
   end
   def new
     @tag = Tag.new
   end
 
   def create
-    @book = Book.find(params[:book_id])
-    @tag = Tag.create(name: tags_params[:name])
-    redirect_to book_path(@book)
+    @tag = Tag.create(tags_params)
+    redirect_to '/tags'
   end
 
   private

@@ -57,6 +57,13 @@ class BooksController < ApplicationController
     def edit
         @book = Book.find(params[:id])
     end
+    def update
+        # byebug
+        @book = Book.find(params[:id])
+        @Book.update(book_params[:tags_ids])
+        
+        redirect_to book_path(@book)
+    end
 
     # def list_reviews
     #     @book = Book.find(params[:id])
@@ -79,7 +86,7 @@ class BooksController < ApplicationController
     private
 
     def book_params
-        params.require(:book).permit(:title, :author, :image_url, tags_ids:[])
+        params.require(:book).permit(:title, :author, :image_url, :tags_ids)
         
     end
 
