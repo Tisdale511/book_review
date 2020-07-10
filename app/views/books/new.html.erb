@@ -1,21 +1,19 @@
 <div id="content">
   <div id="main_content">
     <h3>Add this Book to my list:</h3>
-
     <p>Book Title: <%= @book_info[:book_title] %></p>
     Book Author: <% @book_info[:book_author].each do |a| %>
       <%= a %><br>
     <% end %>
     <p>Book Url: <%= image_tag (@book_info[:book_img_url]) %></p>
-
     <%= form_for @book do |f| %>
-      <%= f.hidden_field :title, value: @book_info[:book_title] %>    
-      <%= f.hidden_field :author, value: @book_info[:book_author] %> 
-      <%= f.hidden_field :image_url, value: @book_info[:book_img_url] %> 
+      <%= f.hidden_field :title, value: @book_info[:book_title] %>
+      <%= f.hidden_field :author, value: @book_info[:book_author] %>
+      <%= f.hidden_field :image_url, value: @book_info[:book_img_url] %>
       <button type="submit">Add book</button>
-    <% end %>
-  
-    <%= link_to 'Create Tags', new_tag_path %><br>
+    <% end %><br>
     <%= link_to 'Back Homepage', books_path %>
-  </div><!-- end of main_content -->
-</div><!-- end of content -->
+  </div>
+  <!-- end of main_content -->
+</div>
+<!-- end of content -->
