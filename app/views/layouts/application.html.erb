@@ -4,29 +4,30 @@
     <title>BookReview</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= render 'layouts/shim' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
   </head>
   <body>
-    <div id='wrapper'>
-      <% if logged_in? %>
-        <div id="header">
-          <h1 class="welcome">Welcome back, <%= current_user.username %>!</h1>
-          <%= link_to "Log out", '/logout', method: 'delete' %>
-          <div class="btn-group">
-            <button><%= link_to 'Add a new Book', new_book_path %></button>
-            <button><%= link_to 'Me', user_path(session[:user_id]) %></button>
-          </div>
-        </div>
-        
-      <% else %>
-        <%= link_to "Please sign up", new_user_path %>
-        <%= link_to "Please sign in", '/login' %>
-      <% end %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "Book Review", books_path, :class => 'navbar-brand', id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if logged_in? %>
+              <li><%= link_to "Home", books_path %></li>
+              <li><%= link_to('My Account', user_path(session[:user_id])) %></li>
+              <li><%= link_to "Log out", '/logout', :method => :delete %></li>
+            <% else %>
+              <%= link_to "Please sign up", new_user_path %>
+              <%= link_to "Please sign in", '/login' %>
+            <% end %>
+          </ul>
+        </nav>
+      </header>
       <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
     <!-- end of wrapper -->
   </body>
