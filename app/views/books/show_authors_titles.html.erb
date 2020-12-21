@@ -1,0 +1,12 @@
+<div id="content">
+  <div id="main_content">
+    <h3>Author's Book Titles:</h3>
+
+    <% @books.map do |b|%><br>
+      <%= link_to b[:book_title], new_book_path({book: b}) %>
+    <% end %><br>
+  
+    <%= link_to 'Create Tags', new_tag_path %><br>
+    <%= link_to 'Back To Homepage', books_path %>
+  </div><!-- end of main_content -->
+</div><!-- end of content -->

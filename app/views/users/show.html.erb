@@ -1,0 +1,30 @@
+<h1><%= @user.username %></h1>
+<br>
+<span class="border border-primary" style="color:#809fff;">
+  <div class="container">
+    <% @user.books.each do |book| %>
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <div><img src="<%= book.image_url%>" /></div>
+          </div>
+          <div class="col-md-8" style="background-color:#ffff99;">
+            <div class="card-body">
+              <h5 class="card-title"><%=  link_to book.title, book %></p>
+              <br>
+              <p class="card-text"><%= book.author %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</span>
+<br>
+<h4>All reviews were written by <%= @user.username %>: </h4>
+<% @user.reviews.each do |review| %>
+  <%=  link_to review.book.title, review.book %>
+  <%=  review.content %><br>
+<% end %><br>
+<%= link_to "Edit User", edit_user_path %><br>
+<%= link_to "Delete User", @user, method: :delete, data: { confirm: "Are you sure you want to delete your account?" } %><br>

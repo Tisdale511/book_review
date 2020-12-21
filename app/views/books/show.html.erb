@@ -1,0 +1,30 @@
+<div><img src="<%= @book.image_url%>" /></div>
+<h3>Book Title:</h3>
+<p><%= @book.title %></p>
+<h3>Book Author:</h3>
+<p><%= @book.author %></p>
+<%#= image_tag @book.get_img_url%>
+<h4>Tags:</h4>
+<%@book.tags.each do |tag|%>
+  <p><%= tag.name %></p>
+<%end%><br>
+<%= button_to "Delete the Book", @book, :method => :delete%><br>
+<h4>Reviews:</h4>
+<%@book.reviews.each do |review|%>
+  <p>
+    <strong><%= review.user.username %>:</strong>
+    <%=review.content%>
+  </p>
+<%end%><br>
+<h3>Add a review:</h3>
+<%=form_for([@book, @book.reviews.build], local: true) do |f|%>
+  <p>
+    <%=f.label :content%><br>
+    <%=f.text_area :content%>
+  </p>
+  <p>
+    <%= f.submit "Add a Review"%>
+  </p>
+<%end%>
+<%= link_to 'Edit this Book', edit_book_path %>
+<%= link_to 'Back Homepage', books_path %>
